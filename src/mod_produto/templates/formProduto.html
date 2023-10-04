@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro Produtos{% endblock %}
+{% block content %}
+<div class="row">
+  <h3 class="d-flex justify-content-center mb-5">Cadastrar Produto</h3>
+  <form name="formAdicionar" id="formAdicionar" class="row was-validated" action="/produto/" method="POST">
+    <div class="col-12 mb-2 form-check">
+      <label class="form-label" for="nome">Nome Produto</label>
+      <input class="form-control" type="text" name="nome" id="nome" value="" placeholder="Nome Produto" maxlength="100" autofocus required>
+      <div class="invalid-feedback">
+        Favor inserir Nome do Produto.
+      </div>
+    </div>
+    <div class="col-12 mb-2 form-check" >
+      <label class="form-label" for="descricao">Descrição</label>
+      <textarea class="form-control" name="descricao" id="descricao" cols="200" rows="10" required></textarea>
+      <div class="invalid-feedback">
+        Favor inserir Descrição.
+      </div>
+    </div>
+    <div class="col-12 mb-2 form-check">
+      <label class="form-label" for="foto">Foto</label>
+      <input type="file" class="form-control" id="foto">
+    </div>
+    <div class="col-12 mb-2 form-check">
+      <label for="valor_unitario" class="form-label">Valor Unitário</label>
+      <input class="form-control" name="valor_unitario" id="valor_unitario" type="text" required>
+      <div class="invalid-feedback">
+        Favor inserir Valor Unitário.
+      </div>
+    </div>
+    <div class="d-flex justify-content-end mt-2">
+      <button type='submit' class="btn btn-md col-2 ml-2 " name='salvaProdutoDB' id='salvaProdutoDB' style="background-color: rgb(240, 151, 43);"><i class='fas fa-save'></i> Salvar</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
