@@ -4,71 +4,82 @@
 {% block content %}
 <div>
   <h3 class="d-flex justify-content-center mb-5">Cadastrar Funcionário</h3>
-  <form name="formAdicionar" id="formAdicionar" class="row was-validated" action="/funcionario/"  method="POST">
+  <form name="formAdicionar" id="formAdicionar" class="row was-validated" action="{{ url_for('funcionario.insert') }}" method="POST">
     <div class="row">
       <div class="col-2 form-check">
         <label for="id" class="form-label">Código</label>
-        <input type="text" name="id" id="id" value="" class="form-control" placeholder="Código" disabled>
+        <input type="text" class="form-control" name="id" id="id" value="0" placeholder="Código" readonly>
       </div>
-      <div class="col-7 form-check ">
+      <div class="col-7  form-check ">
           <label for="nome" class="form-label">Nome Funcionário</label>
-          <input type="text" name="nome" id="nome" value="" class="form-control" placeholder="Nome Funcionário" maxlength="100" autofocus required>
+          <input type="text" name="nome" class="form-control" id="nome" value="" placeholder="Nome Funcionário" maxlength="100" autofocus required>
           <div class="invalid-feedback">
+
             Favor inserir Nome.
-          </div>
+            
+            </div>
         </div>
-      <div class="col-3 form-check">
+      <div class="col-3  form-check ">
           <label for="matricula" class="form-label">Matrícula</label>
-          <input type="number" name="matricula" id="matricula" class="form-control" value="" placeholder="Matrícula" maxlength="15" required>
+          <input type="text" name="matricula" class="form-control" id="matricula" value="" placeholder="Matrícula" maxlength="15" required>
           <div class="invalid-feedback">
+
             Favor inserir Matrícula.
-          </div>
+            
+            </div>
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-4 form-check">
+        <div class="col-4  form-check">
             <label for="cpf" class="form-label">CPF</label>
-            <input type="text" name="cpf" id="cpf" value="" class="form-control" placeholder="CPF" maxlength="15" required>
+            <input type="text" name="cpf" id="cpf" class="form-control" value="" placeholder="CPF" maxlength="15" required>
             <div class="invalid-feedback">
+
               Favor inserir CPF.
+              
+              </div>
+        </div>
+        <div class="col-4  form-check ">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="tel" name="telefone" id="telefone" class="form-control" value="" placeholder="Telefone" maxlength="15" required>
+          <div class="invalid-feedback">
+
+            Favor inserir Telefone.
+            
             </div>
         </div>
-        <div class="col-4 form-check">
-          <label for="telefone" class="form-label">Telefone</label>
-          <input type="tel" name="telefone" id="telefone" value="" class="form-control" placeholder="Telefone" maxlength="11" required>
-          <div class="invalid-feedback">
-            Favor inserir Telefone.
-          </div>  
-        </div>
-        <div class="col-4  ">
+        <div class="col-4 ">
           <label for="grupo" class="form-label">Grupo</label>
-          <select name="grupo" id="grupo" aria-label="Grupo" class="form-select">
+          <select name="grupo" id="grupo" aria-label="Grupo" class="form-select" >
             <option value="0">Atendente</option>
             <option value="1">Caixa</option>
             <option value="2">Adm</option>
-          </select>
+            </select>
         </div>
     </div>
     <div class="row">
-      <div class="col-6 form-check">
+      <div class="col-6  form-check">
         <label for="senha" class="form-label">Senha</label>
-        <input type="password" name="senha" id="senha" class="form-control" value="" placeholder="Senha" required>
+        <input type="password" name="senha" id="senha" class="form-control" value="Bolinhas" placeholder="Senha" required>
         <div class="invalid-feedback">
+
           Favor inserir Senha.
-        </div>
+          
+          </div>
       </div>
-      <div class="col-6 form-check">
+      <div class="col-6 form-check ">
           <label for="resenha" class="form-label">Senha Novamente</label>
-          <input type="password" name="resenha" id="resenha" class="form-control" value="" placeholder="Senha" required>
+          <input type="password" name="resenha" id="resenha" class="form-control" value="Bolinhas" placeholder="Senha" required>
           <div class="invalid-feedback">
             Favor inserir novamente a Senha.
-          </div>  
+            </div>
         </div>
     </div>
     <div class="row">
-    <div class="d-flex justify-content-end mt-2">
-      <button type='submit' name='salvaFuncionarioDB' id='salvaFuncionarioDB' class="btn btn-md col-2 ml-2 " style="background-color: rgb(240, 151, 43);"><i class='fas fa-save'></i>Salvar</button>
-    </div> 
+      <div class="d-flex justify-content-end mt-2">
+    <button type='submit' name='salvaUsuarioDB' id='salvaUsuarioDB' class="btn btn-md col-2 ml-2 " style="background-color: rgb(240, 151, 43);"><i class='fas fa-save'></i> Salvar</button>
+    </div>
+    </div>
   </div> 
   </form>
 </div>

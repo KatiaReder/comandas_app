@@ -4,28 +4,32 @@
 {% block content %}
 <div class="row">
   <h3 class="d-flex justify-content-center mb-5">Cadastrar Produto</h3>
-  <form name="formAdicionar" id="formAdicionar" class="row was-validated" action="/produto/" method="POST">
-    <div class="col-12 mb-2 form-check">
+  <form name="formAdicionar" id="formAdicionar" class="row was-validated" action="{{ url_for('produto.insert')}}" method="POST" enctype="multipart/form-data">
+    <div class="col-2 form-check">
+      <label for="id" class="form-label">Código</label>
+      <input type="text" class="form-control" name="id" id="id" value="0" placeholder="Código" readonly>
+    </div>
+    <div class="col-10 mb-2 form-check">
       <label class="form-label" for="nome">Nome Produto</label>
-      <input class="form-control" type="text" name="nome" id="nome" value="" placeholder="Nome Produto" maxlength="100" autofocus required>
+      <input type="text" name="nome" id="nome" value="" placeholder="Nome do Produto" autofocus required class="form-control">
       <div class="invalid-feedback">
         Favor inserir Nome do Produto.
       </div>
     </div>
     <div class="col-12 mb-2 form-check" >
       <label class="form-label" for="descricao">Descrição</label>
-      <textarea class="form-control" name="descricao" id="descricao" cols="200" rows="10" required></textarea>
+      <textarea name="descricao" id="descricao" placeholder="Descrição do Produto" required class="form-control"></textarea>
       <div class="invalid-feedback">
         Favor inserir Descrição.
       </div>
     </div>
     <div class="col-12 mb-2 form-check">
       <label class="form-label" for="foto">Foto</label>
-      <input type="file" class="form-control" id="foto">
+      <input type="file" name="foto" accept="image/*" id="foto" class="form-control">
     </div>
     <div class="col-12 mb-2 form-check">
       <label for="valor_unitario" class="form-label">Valor Unitário</label>
-      <input class="form-control" name="valor_unitario" id="valor_unitario" type="text" required>
+      <input type="number" name="valor_unitario" id="valor_unitario" value="" required class="form-control">
       <div class="invalid-feedback">
         Favor inserir Valor Unitário.
       </div>
