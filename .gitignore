@@ -9,3 +9,4 @@ pyvenv.cfg
 .vscode
 bootstrap-5.3.2-dist/
 fontawesome-free-6.4.2-web/
+sweetalert2/

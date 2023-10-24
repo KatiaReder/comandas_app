@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="d-flex row">
-  <form action="{{ url_for('cliente.formCliente')}}" method="post" class="row">
+  <form action="{{ url_for('cliente.formCliente')}}" method="POST" class="row">
     <h2 class="col-10">Cliente</h2>
     <button type="submit" name="formNovo" class="btn btn-md col-2 " style="background-color: rgb(240, 151, 43);">Novo Cliente</button>
   </form>
@@ -22,17 +22,22 @@
     </tr>
   </thead>
   <tbody>
+    {% if result %}
+    {% for row in result %}
     <tr>
-    <th scope="row">...</th>
-    <td>...</td>
-    <td>...</td>
-    <td>...</td>
-    <td>...</td>
-    <td>...</td>
-    <td>...</td>
-    <td><i class="fas fa-edit"></i></td>
-    <td><i class="fas fa-trash"></i></td>
+      <th scope="row"> {{ row['id_cliente'] }}</th>
+      <td> {{ row['nome']}} </td>
+      <td> {{ row['cpf']}}</td>
+      <td> {{ row['telefone']}}</td>
+      <td> {{ row['compra_fiado']}}</td>
+      <td> {{row['dia_fiado']}}</td>
+      <td> {{ row['senha'] }}</td>
+      <td><i class="fas fa-edit"></i></td>
+      <td><i class="fas fa-trash"></i></td>
     </tr>
+    {% endfor %}
+    {% endif %}
     </tbody>
 </table>
+
 {% endblock %}
