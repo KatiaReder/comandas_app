@@ -94,8 +94,7 @@ def delete():
 
     if (response.status_code != 200 or result[1] != 200):
       raise Exception(result[0])
-# return redirect(url_for('funcionario.formListaFuncionario', msg=result[0]))
+
     return jsonify(erro=False, msg=result[0])
   except Exception as e:
-    # return render_template('formListaFuncionario.html', msgErro=e.args[0])
     return jsonify(erro=True, msgErro=e.args[0])

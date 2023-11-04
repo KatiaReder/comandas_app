@@ -14,69 +14,67 @@
 {% block content %}
 <div>
   <h3 class="d-flex justify-content-center mb-5"> {{ "%s: %s" % ('Editar', id) if result else 'Cadastrar'}} - Cliente</h3>
-<form name="{{'formEditar' if result else 'formAdicionar'}}" id="{{'formEditar' if result else 'formAdicionar'}}"  class="row was-validated" action="{{ url_for('cliente.edit') if result else url_for('cliente.insert')}}" method="POST">
- <div class="row">
-  <div class="col-2 form-check">
-    <label for="id" class="form-label">Código</label>
-    <input type="text" class="form-control" name="id" id="id" value="{{id}}" placeholder="Código" readonly>
-  </div>
-  <div class="col-12 form-check">
-    <label for="nome" class="form-label">Nome Cliente</label>
-    <input type="text" name="nome" class="form-control" id="nome" value="{{nome}}" placeholder="Nome Cliente" maxlength="100" autofocus required>
-    <div class="invalid-feedback">
-      Favor inserir Nome.
-    </div>
-  </div>
-</div>
-  <div class="row">
-  <div class="col-6 form-check">
-    <label for="cpf" class="form-label">CPF</label>
-    <input type="text" name="cpf" id="cpf" class="form-control" value="{{cpf}}" placeholder="CPF" maxlength="15" required>
-    <div class="invalid-feedback">
-      Favor inserir CPF.
-    </div>
-</div>
-<div class="col-6 form-check">
-  <label for="telefone" class="form-label">Telefone</label>
-  <input type="tel" name="telefone" id="telefone" class="form-control" value="{{telefone}}" placeholder="Telefone" maxlength="15" required>
-  <div class="invalid-feedback">
-    Favor inserir Telefone.
-  </div>  
-</div>
-</div>
-<div class="row">
-  <div class="col-6 form-check">
-  <label for="compra_fiado" class="form-label">Compra Fiado</label>
-  <input name="compra_fiado" class="form-control" id="compra_fiado" type="number" value="{{compra_fiado}}">
-</div>
-<div class="col-6 form-check">
-  <label for="dia_fiado" class="form-label">Dia Fiado</label>
-  <input type="number" name="dia_fiado" id="dia_fiado" class="form-control" value="{{dia_fiado}}">
-</div>
-</div>
-<div class="row">
-  <div class="col-6  form-check">
-    <label for="senha" class="form-label">Senha</label>
-    <input type="password" name="senha" id="senha" class="form-control" value="{{senha}}" placeholder="Senha" required>
-    <div class="invalid-feedback">
-
-      Favor inserir Senha.
-      
+  <form name="{{'formEditar' if result else 'formAdicionar'}}" id="{{'formEditar' if result else 'formAdicionar'}}"  class="row was-validated" action="{{ url_for('cliente.edit') if result else url_for('cliente.insert')}}" method="POST">
+    <div class="row">
+      <div class="col-2 form-check">
+        <label for="id" class="form-label">Código</label>
+        <input type="text" class="form-control" name="id" id="id" value="{{id}}" placeholder="Código" readonly>
       </div>
-  </div>
-  <div class="col-6 form-check ">
-      <label for="resenha" class="form-label">Senha Novamente</label>
-      <input type="password" name="resenha" id="resenha" class="form-control" value="{{senha}}" placeholder="Senha" required>
-      <div class="invalid-feedback">
-        Favor inserir novamente a Senha.
+      <div class="col-12 form-check">
+        <label for="nome" class="form-label">Nome Cliente</label>
+        <input type="text" name="nome" class="form-control" id="nome" value="{{nome}}" placeholder="Nome Cliente" maxlength="100" autofocus required>
+        <div class="invalid-feedback">
+          Favor inserir Nome.
         </div>
+      </div>
     </div>
-</div>
-<div class="row">
-    <div class="d-flex justify-content-end mt-2">
-      <button type='submit' name='salvaUsuarioDB' id='salvaUsuarioDB' class="btn btn-md col-2 ml-2 " style="background-color: rgb(240, 151, 43);"><i class='fas fa-save'></i> Salvar</button>
-    </div>  
-  </div>
+    <div class="row">
+      <div class="col-6 form-check">
+        <label for="cpf" class="form-label">CPF</label>
+        <input type="text" name="cpf" id="cpf" class="form-control" value="{{cpf}}" placeholder="CPF" maxlength="15" required>
+        <div class="invalid-feedback">
+          Favor inserir CPF.
+        </div>
+      </div>
+      <div class="col-6 form-check">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="tel" name="telefone" id="telefone" class="form-control" value="{{telefone}}" placeholder="Telefone" maxlength="15" required>
+        <div class="invalid-feedback">
+          Favor inserir Telefone.
+        </div>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 form-check">
+        <label for="compra_fiado" class="form-label">Compra Fiado</label>
+        <input name="compra_fiado" class="form-control" id="compra_fiado" type="number" value="{{compra_fiado}}">
+      </div>
+      <div class="col-6 form-check">
+        <label for="dia_fiado" class="form-label">Dia Fiado</label>
+        <input type="number" name="dia_fiado" id="dia_fiado" class="form-control" value="{{dia_fiado}}">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6  form-check">
+        <label for="senha" class="form-label">Senha</label>
+        <input type="password" name="senha" id="senha" class="form-control" value="{{senha}}" placeholder="Senha" required>
+        <div class="invalid-feedback">
+          Favor inserir Senha.
+        </div>
+      </div>
+      <div class="col-6 form-check ">
+          <label for="resenha" class="form-label">Senha Novamente</label>
+          <input type="password" name="resenha" id="resenha" class="form-control" value="{{senha}}" placeholder="Senha" required>
+          <div class="invalid-feedback">
+            Favor inserir novamente a Senha.
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-flex justify-content-end mt-2">
+        <button type='submit' name='salvaUsuarioDB' id='salvaUsuarioDB' class="btn btn-md col-2 ml-2 " style="background-color: rgb(240, 151, 43);"><i class='fas fa-save'></i> Salvar</button>
+      </div>  
+    </div>
   </form>
 </div>
 

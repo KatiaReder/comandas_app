@@ -30,7 +30,6 @@ def insert():
     nome = request.form['nome']
     descricao = request.form['descricao']
     valor_unitario = request.form['valor_unitario']
-    # converte a foto em base64
     foto = "data:" + request.files['foto'].content_type + ";base64," + str(base64.b64encode(request.files['foto'].read()), "utf-8")
 
     payload = {'id_produto': id_produto, 'nome': nome, 'descricao': descricao, 'foto': foto, 'valor_unitario': valor_unitario}
@@ -70,7 +69,6 @@ def edit():
     nome = request.form['nome']
     descricao = request.form['descricao']
     valor_unitario = request.form['valor_unitario']
-    # converte a foto em base64
     foto = "data:" + request.files['foto'].content_type + ";base64," + str(base64.b64encode(request.files['foto'].read()), "utf-8")
 
     payload = {'id_produto': id_produto, 'nome': nome, 'descricao': descricao, 'foto': foto, 'valor_unitario': valor_unitario}
