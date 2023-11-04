@@ -51,10 +51,7 @@
   <script type="text/javascript"  src="{{ url_for('static', filename='js/script.js') }}"></script>
   <script type="text/javascript"  src="{{ url_for('static', filename='sweetalert2/sweetalert2.all.min.js') }}"></script>
   <script type="text/javascript"  src="{{url_for('static', filename='jquery/jquery.mask.js') }}"></script>
-  {% endblock %}
-
-
-</html>
+  
     <!-- redirect - request.args.get('msg' ou 'msgErro') -->
     {% if request.args.get('msg'): %}
     <script>
@@ -74,3 +71,6 @@
     Swal.fire("{{ msgErro.msg if msgErro.msg else 'Erro' }}", "{{ msgErro }}", "error");
     </script>
     {% endif %}
+  {% endblock %}
+
+</html>

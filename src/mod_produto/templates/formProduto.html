@@ -1,24 +1,32 @@
 {% extends "base.html" %}
 
 {% block title %}Cadastro Produtos{% endblock %}
+
+{# ajusta a variáveis conforme novo ou edit #}
+{% set id = result[0].id_produto if result else '0' %}
+{% set nome = result[0].nome if result else '' %}
+{% set descricao = result[0].descricao if result else '' %}
+{% set valor_unitario = result[0].valor_unitario if result else '' %}
+{% set foto = result[0].foto if result else '' %}
+
 {% block content %}
 <div class="row">
-  <h3 class="d-flex justify-content-center mb-5">Cadastrar Produto</h3>
-  <form name="formAdicionar" id="formAdicionar" class="row was-validated" action="{{ url_for('produto.insert')}}" method="POST" enctype="multipart/form-data">
+  <h3 class="d-flex justify-content-center mb-5"> {{ "%s: %s" % ('Editar', id) if result else 'Cadastrar'}} - Produto</h3>
+<form name="{{ 'formEditar' if result else 'formAdicionar' }}" class="row was-validated" id="{{ 'formEditar' if result else 'formAdicionar' }}" action="{{ url_for('produto.edit') if result else url_for('produto.insert') }}" method="POST" enctype="multipart/form-data">
     <div class="col-2 form-check">
       <label for="id" class="form-label">Código</label>
-      <input type="text" class="form-control" name="id" id="id" value="0" placeholder="Código" readonly>
+      <input type="text" class="form-control" name="id" id="id" value="{{id}}" placeholder="Código" readonly>
     </div>
     <div class="col-10 mb-2 form-check">
       <label class="form-label" for="nome">Nome Produto</label>
-      <input type="text" name="nome" id="nome" value="" placeholder="Nome do Produto" autofocus required class="form-control">
+      <input type="text" name="nome" id="nome" value="{{nome}}" placeholder="Nome do Produto" autofocus required class="form-control">
       <div class="invalid-feedback">
         Favor inserir Nome do Produto.
       </div>
     </div>
     <div class="col-12 mb-2 form-check" >
       <label class="form-label" for="descricao">Descrição</label>
-      <textarea name="descricao" id="descricao" placeholder="Descrição do Produto" required class="form-control"></textarea>
+      <textarea name="descricao" id="descricao" placeholder="Descrição do Produto" required class="form-control">{{descricao}}</textarea>
       <div class="invalid-feedback">
         Favor inserir Descrição.
       </div>
@@ -29,7 +37,7 @@
     </div>
     <div class="col-12 mb-2 form-check">
       <label for="valor_unitario" class="form-label">Valor Unitário</label>
-      <input type="number" name="valor_unitario" id="valor_unitario" value="" required class="form-control">
+      <input type="number" name="valor_unitario" id="valor_unitario" value="{{valor_unitario}}" required class="form-control">
       <div class="invalid-feedback">
         Favor inserir Valor Unitário.
       </div>
