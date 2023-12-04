@@ -3,8 +3,12 @@
 {% block title %}HOME{% endblock %}
 
 {% block content %}
+{% if 'login' in session %}
+<h3 class="d-flex justify-content-center bemVindo">Seja bem vindo! <b>{{ session['login'], session['grupo'] }}</b></h3>
+
+{% endif %}
 <h1 class="d-flex justify-content-center">Pizaria do Zé</h1>
-<h3 class="d-flex justify-content-center bemVindo">Seja bem vindo!</h3>
+
 <div id="carouselExample" class="carousel slide">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

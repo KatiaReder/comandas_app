@@ -5,9 +5,15 @@
 {% block content %}
 <div class="d-flex row">
 <form action="{{ url_for('funcionario.formFuncionario')}}" method="POST" class="row">
+  
   <h2 class="col-10">Funcionários</h2>
-  <button type="submit" name="formNovo" class="btn btn-md col-2 " style="background-color: rgb(240, 151, 43);">Novo Funcionário</button>
+
+  <button type="submit" name="formNovo" class="btn btn-md col-2 m-2 " style="background-color: rgb(240, 151, 43);">Novo Funcionário</button>
+
 </form>
+<form action="{{ url_for('funcionario.pdfTodos') }}" method="POST" class="row">
+  <button target="_blank" href="{{ url_for('funcionario.pdfTodos') }}"class="btn btn-md col-2 m-2 " style="background-color: rgb(240, 151, 43);">PDF</button>
+</form> 
 </div>
 <table class="table table-striped">
   <thead>

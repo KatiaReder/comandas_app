@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block menu %}
+
+  <div class="d-flex justify-content-center mt-5 ">
+    <h2 class="text-center" >Bem-vindo! Faça Login para continuar.</h2>
+  </div>
+{% endblock %}
+{% block content %}
+<div>
+  <form action="{{ url_for('login.validaLogin') }}" method="post">
+    <div class="row mb-3 d-flex justify-content-center">
+      <label for="cpf" class="col-sm-2 col-form-label">CPF</label>
+      <div class="col-sm-5">
+    <input placeholder="CPF" name="usuario" type="text" value="abc" class="form-control">
+  </div>
+  </div>
+  <div class="row mb-3 d-flex justify-content-center">
+  <label for="grupo"class="col-sm-2 col-form-label">Grupo</label>
+  <div class="col-sm-5">
+      <select name="grupo" id="grupo" aria-label="Grupo" class="form-select col-sm-2" >
+        <option value="Atendente" {{ 'selected' if grupo == 0 else '' }}>Atendente</option>
+        <option value="Caixa" {{ 'selected' if grupo == 1 else '' }}>Caixa</option>
+        <option value="Adm" {{ 'selected' if grupo == 3 else '' }}>Adm</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mb-3 d-flex justify-content-center">
+  <label for="senha" class="col-sm-2 col-form-label">Senha</label>
+  <div class="col-sm-5">
+  <input placeholder="Senha" name="senha" type="password" value="Bolinhas" class="form-control">
+</div>
+</div>
+
+  <div class="row">
+    <div class="d-flex justify-content-center mt-2">
+      <button type='submit'  class="btn btn-md col-2 ml-2 " style="background-color: rgb(240, 151, 43);"> Entrar</button>
+      </div>
+    </div>
+
+  </form>
+
+{% endblock %}

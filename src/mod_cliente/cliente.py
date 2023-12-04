@@ -1,10 +1,14 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
+from mod_login.login import validaSessao
+from flask import send_file
+from mod_cliente.GeraPdfCliente import PDF
 import requests
 from settings import HEADERS_API, ENDPOINT_CLIENTE
 from funcoes import Funcoes
 bp_cliente = Blueprint('cliente', __name__, url_prefix="/cliente", template_folder='templates')
 
 @bp_cliente.route('/', methods=['GET', 'POST'])
+@validaSessao
 def formListaCliente():
   try:
     response = requests.get(ENDPOINT_CLIENTE, headers=HEADERS_API)
@@ -17,10 +21,12 @@ def formListaCliente():
     return render_template('formListaCliente.html', msgErro=e.args[0])
 
 @bp_cliente.route('/form-cliente/', methods=['POST'])
+@validaSessao
 def formCliente():
   return render_template('formCliente.html')
 
 @bp_cliente.route('/insert', methods=['POST'])
+@validaSessao
 def insert(): 
   try:
     id_cliente = request.form['id']
@@ -47,6 +53,7 @@ def insert():
 
 
 @bp_cliente.route('/form-edit-cliente', methods=['POST'])
+@validaSessao
 def formEditCliente():
   try:
     id_cliente = request.form['id']
@@ -62,6 +69,7 @@ def formEditCliente():
 
 
 @bp_cliente.route('/edit', methods=['POST'])
+@validaSessao
 def edit():
   try:
     id_cliente = request.form['id']
@@ -86,6 +94,7 @@ def edit():
     return render_template('formListaCliente.html', msgErro=e.args[0])
 
 @bp_cliente.route('/delete', methods=['POST'])
+@validaSessao
 def delete():
   try:
     id_cliente = request.form['id_cliente']
@@ -98,3 +107,10 @@ def delete():
     return jsonify(erro=False, msg=result[0])
   except Exception as e:
     return jsonify(erro=True, msgErro=e.args[0])
+  
+@bp_cliente.route('/pdfTodos', methods=['GET', 'POST'])
+@validaSessao
+def pdfTodos():
+    geraPdf = PDF()
+    geraPdf.listaTodos()
+    return send_file('pdfClientes.pdf')
