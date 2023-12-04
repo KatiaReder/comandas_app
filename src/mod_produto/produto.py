@@ -1,4 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
+from flask import send_file
+from mod_login.login import validaSessao
+from mod_produto.GeraPdf import PDF
 import requests
 from settings import HEADERS_API, ENDPOINT_PRODUTO
 from funcoes import Funcoes
@@ -7,6 +10,7 @@ import base64
 bp_produto = Blueprint('produto', __name__, url_prefix="/produto", template_folder='templates')
 
 @bp_produto.route('/', methods=['GET', 'POST'])
+@validaSessao
 def formListaProduto():
   try:
     response = requests.get(ENDPOINT_PRODUTO, headers=HEADERS_API)
@@ -20,10 +24,12 @@ def formListaProduto():
     return render_template('formListaProduto.html', msgErro=e.args[0])
 
 @bp_produto.route('/form-produto/', methods=['POST'])
+@validaSessao
 def formProduto():
   return render_template('formProduto.html')
 
 @bp_produto.route('/insert', methods=['POST'])
+@validaSessao
 def insert():
   try:
     id_produto = request.form['id']
@@ -48,6 +54,7 @@ def insert():
     return render_template('formListaProduto.html', msgErro=e.args[0])
 
 @bp_produto.route('/form-edit-produto', methods=['POST'])
+@validaSessao
 def formEditProduto():
     try:
       id_produto = request.form['id']
@@ -63,6 +70,7 @@ def formEditProduto():
 
 
 @bp_produto.route('/edit', methods=['POST'])
+@validaSessao
 def edit():
   try:
     id_produto = request.form['id']
@@ -86,6 +94,7 @@ def edit():
 
 
 @bp_produto.route('/delete', methods=['POST'])
+@validaSessao
 def delete():
   try:
     id_produto = request.form['id_produto']
@@ -99,3 +108,10 @@ def delete():
 
   except Exception as e:
     return jsonify(erro=True, msg=e.args[0])
+
+@bp_produto.route('/pdfTodos', methods=['GET', 'POST'])
+@validaSessao
+def pdfTodos():
+  geraPdf = PDF()
+  geraPdf.listaTodos()
+  return send_file('pdfProdutos.pdf')
